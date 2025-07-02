@@ -1,0 +1,16 @@
+Ele está invertendo as os valores das posições do vetor até que a condição e >= d seja verdadeira, 
+ou seja o indice *e que é crescente, chegou até a posição inicial do indice *d que é decrescente, significando que *d chegou até a posição inicial de *e,
+realizando constantes trocas aé chegar a condição
+
+ex
+vet[] = 1,3,4,6
+
+e = 2, d = 4
+
+//pos 2 troca com pos4 (3,6) = (6,3)
+
+e = 3, d = 3 //é igual, logo alcança a condição para encerrar a recursividade 
+
+resultado:
+vet[] = 1,6,4,3
+
