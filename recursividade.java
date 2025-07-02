@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class prova {
+public class recursividade {
 
     final static Scanner LER = new Scanner(System.in);
 
@@ -27,7 +27,7 @@ public class prova {
         } else if (n == 2) {
             return 2;
         } else {
-            return (n * (n - 1)) + (n * (n - 2)) + (n * (n - 3)) * tribonacciRec(n - 1);
+            return tribonacciRec(n - 1) + tribonacciRec(n - 2) + tribonacciRec(n - 3);
         }
     }
 
@@ -38,7 +38,7 @@ public class prova {
         } else if (p == 1) {
             return 1;
         } else {
-            return (2 * p * (p - 1)) + (p * (p - 2)) * pellRec(p - 1);
+            return 2 * p * (p - 1) + p * (p - 2) + pellRec(p - 1);
         }
     }
 

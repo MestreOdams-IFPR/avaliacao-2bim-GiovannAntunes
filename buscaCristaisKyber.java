@@ -7,6 +7,8 @@ public class buscaCristaisKyber {
 
         while (true) {
 
+            int casoTeste = 0;
+
             int n = 0;
             n = lerInt(n);
 
@@ -18,8 +20,15 @@ public class buscaCristaisKyber {
             }
 
             int[] vet = new int[n];
-            vet = seletion(vet);
+            vet = mergeSort(vet, 0, vet.length);
 
+            int x = 0;
+            x = lerInt(x);
+            binSearch(vet, x);
+
+            casoTeste++;
+
+            System.out.println("CASE# " + casoTeste + ":");
         }
     }
 
@@ -43,26 +52,40 @@ public class buscaCristaisKyber {
         return valor = LER.nextInt();
     }
 
-    public static int[] seletion(int[] vet) {
-
-        for (int i = 0; i < vet.length; i++) {
-            int p = i;
-            for (int j = i + 1; j < vet.length; j++) {
-                if (vet[j] < vet[p]) {
-                    p = j;
-                }
-            }
-            if (p != i) {
-                swap(vet, i, p);
-            }
+    public static int[] mergeSort(int[] vet, int inicio, int fim) {
+        if (fim - inicio > 1) {
+            int meio = (inicio - fim) / 2;
+            mergeSort(vet, inicio, meio);
+            mergeSort(vet, meio, fim);
+            doMerge(vet, inicio, meio, fim);
         }
-
         return vet;
     }
 
-    public static void swap(int[] vet, int i, int j) {
-        int temp = vet[i];
-        vet[i] = vet[j];
-        vet[j] = temp;
+    public static void doMerge(int[] vet, int inicio, int meio, int fim) {
+        int i = inicio, j = meio, k = 0;
+
+        int[] vetAux = new int[fim - inicio];
+
+        while (i < meio && j < fim) {
+            if (vet[i] <= vet[j]) {
+                vetAux[k++] = vet[i++];
+            } else {
+                vetAux[k++] = vet[j++];
+
+            }
+        }
+
+        while (i < meio) {
+            vetAux[k++] = vet[i++];
+        }
+
+        while (j < meio) {
+            vetAux[k++] = vet[j++];
+        }
+
+        for (i = inicio; i < fim; i++) {
+            vet[i] = vetAux[i - inicio];
+        }
     }
 }
